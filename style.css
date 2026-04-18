@@ -4,6 +4,13 @@ body {
   padding: 20px;
 }
 
+#show-search {
+  padding: 8px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 #search {
   padding: 8px;
   font-size: 1rem;
@@ -15,6 +22,42 @@ body {
   padding: 8px;
   font-size: 1rem;
   margin-bottom: 10px;
+}
+
+#back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: blue;
+}
+
+#shows-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.show-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.show-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.show-name {
+  cursor: pointer;
+  color: blue;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.show-name:hover {
+  text-decoration: underline;
 }
 
 #episode-container {
