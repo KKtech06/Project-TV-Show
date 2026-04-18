@@ -56,7 +56,7 @@ function makeEpisodeCard(episode) {
 
   card.innerHTML = `
     <h2>${episode.name} - S${season}E${number}</h2>
-    <img src="${episode.image.medium}" alt="${episode.name}" />
+    <img src="${episode.image?.medium || ""}" alt="${episode.name}" />
     ${episode.summary}
   `;
 
@@ -66,17 +66,20 @@ function makeEpisodeCard(episode) {
 function showEpisodeCards(episodeList) {
   const container = document.getElementById("episode-container");
   container.innerHTML = "";
+
   for (let episode of episodeList) {
     const card = makeEpisodeCard(episode);
     container.appendChild(card);
   }
 }
 
+// 🔢 COUNT
 function updateCount(episodeList) {
   const countElem = document.getElementById("count");
   countElem.textContent = "Displaying " + episodeList.length + " episode(s)";
 }
 
+// 📋 EPISODE SELECTOR
 function populateEpisodeSelector(episodeList) {
   const selector = document.getElementById("episode-selector");
   selector.innerHTML = "";
@@ -86,15 +89,29 @@ function populateEpisodeSelector(episodeList) {
   defaultOption.textContent = "All Episodes";
   selector.appendChild(defaultOption);
 
+  episodeList.forEach((episode) => {
   for (let i = 0; i < episodeList.length; i++) {
     const episode = episodeList[i];
     const season = String(episode.season).padStart(2, "0");
     const number = String(episode.number).padStart(2, "0");
     const option = document.createElement("option");
+    option.value = episode.id;
+    option.textContent = `S${season}E${number} - ${episode.name}`;
     option.value = i;
     option.textContent = "S" + season + "E" + number + " - " + episode.name;
     selector.appendChild(option);
-  }
+  });
+
+  selector.addEventListener("change", function () {
+    const value = selector.value;
+
+    if (value === "all") {
+      renderEpisodes(currentEpisodes);
+    } else {
+      const selected = currentEpisodes.find(ep => ep.id == value);
+      renderEpisodes([selected]);
+    }
+  });
 }
 
 window.onload = setup;

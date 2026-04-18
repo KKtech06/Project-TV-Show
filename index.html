@@ -1,30 +1,33 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TV Show Project | Karim(KKtech06)</title>
-  <link href="style.css" rel="stylesheet" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-</head>
+  <body>
+    <div id="root"></div>
+<select id="show-select"></select>
+<input id="search" />
+<select id="episode-selector"></select>
 
-<body>
-  <input id="search" placeholder="Search..." />
-  <select id="episode-selector"></select>
-  <p id="count"></p>
+<p id="count"></p>
+<p id="message"></p>
 
-  <div id="episode-container"></div>
+<div id="episode-container"></div>
 
-  <div class="tvMaze">
-    <p>
-      Data originally sourced from
-      <a href="https://www.tvmaze.com" target="_blank" rel="noopener noreferrer">TVMaze.com</a>.
-      Visit their site for more information.
-    </p>
-  </div>
+    <div class="tvMaze">
+      <p>
+        Data originally sourced from
+        <a
+          href="https://www.tvmaze.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >TVMaze.com</a
+        >. Visit their site for more information.
+      </p>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+    <script src="episodes.js"></script>
 
+    <!-- Loads YOUR javascript code -->
+    <script src="script.js"></script>
+  </body>
 </html>
